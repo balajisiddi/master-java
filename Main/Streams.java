@@ -4,6 +4,7 @@ import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -35,5 +36,15 @@ public class Streams {
             wasCalled();
             return s.contains("b");
         });
+
+        int reduced = IntStream.range(1, 4).reduce(0, (a,b) -> a+b);
+        System.out.println("Reduced value: " + reduced);
+
+        int reducedParam= Stream.of(1,2,3).reduce(0, (a,b)-> a+b, (a,b)->{
+            System.out.println("Combiner was called");
+            return a+b;
+        });
+
+        int reduces= Stream.of(1,2,3,4,5).reduce(1, (a,b) -> a+b);
     }
 }
