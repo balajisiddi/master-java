@@ -46,5 +46,8 @@ public class Streams {
         });
 
         int reduces= Stream.of(1,2,3,4,5).reduce(1, (a,b) -> a+b);
+
+        Stream.of(1,2,3,4,5).parallel().reduce(1, (a,b) -> a+b);
+
     }
 }
